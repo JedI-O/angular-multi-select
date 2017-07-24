@@ -34,8 +34,7 @@
 /* the multiselect button */
 .multiSelect > button {
     display: inline-block;
-    position: absolute;
-    float: left;
+    position: relative;
     text-align: center;    
     cursor: pointer;
     border: 1px solid #c6c6c6;    
@@ -212,7 +211,8 @@
     -o-user-select: none;
     user-select: none;      
     border: 1px solid transparent;
-    position: relative;
+    position: absolute;
+    float: left;
     min-width:278px;    
     min-height: 32px;    
 }
