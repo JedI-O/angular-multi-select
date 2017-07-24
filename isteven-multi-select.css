@@ -9,6 +9,7 @@
 
 /* ! horizontal layout */
 .multiSelect .horizontal:not(.multiSelectGroup) {
+    position: absolute;
     float: left;
 }
 
