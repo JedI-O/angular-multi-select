@@ -9,7 +9,6 @@
 
 /* ! horizontal layout */
 .multiSelect .horizontal:not(.multiSelectGroup) {
-    position: absolute;
     float: left;
 }
 
@@ -35,7 +34,7 @@
 /* the multiselect button */
 .multiSelect > button {
     display: inline-block;
-    position: relative;
+    position: absolute;
     text-align: center;    
     cursor: pointer;
     border: 1px solid #c6c6c6;    
