@@ -192,8 +192,6 @@
     display: block;
     padding: 8px;   
     overflow: hidden;
-    position: absolute;
-    float: left;
 }
 
 /* ! to show / hide the checkbox layer above */
@@ -298,4 +296,9 @@
     margin-bottom:0px;
     max-height: 22px;
     max-width:22px;
+}
+
+.absoluteContainer {
+    position: absolute;
+    float: left;
 }

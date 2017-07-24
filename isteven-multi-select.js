@@ -1077,6 +1077,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
         // '<button type="button" class="clearButton" ng-click="clearClicked( $event )" >×</button> '+
         '</div> '+
         '</div> '+
+        '<div class="absoluteContainer"></div>'+
         // selection items
         '<div class="checkBoxContainer">'+
         '<div '+
@@ -1103,6 +1104,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
         '</div>'+
         // the tick/check mark
         '<span class="tickMark" ng-if="item[ groupProperty ] !== true && item[ tickProperty ] === true" ng-bind-html="icon.tickMark"></span>'+
+        '</div>'+
         '</div>'+
         '</div>'+
         '</div>'+
