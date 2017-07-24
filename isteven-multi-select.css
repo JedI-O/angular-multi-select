@@ -192,6 +192,8 @@
     display: block;
     padding: 8px;   
     overflow: hidden;
+    position: absolute;
+    float: left;
 }
 
 /* ! to show / hide the checkbox layer above */
@@ -211,8 +213,7 @@
     -o-user-select: none;
     user-select: none;      
     border: 1px solid transparent;
-    position: absolute;
-    float: left;
+    position: relative;
     min-width:278px;    
     min-height: 32px;    
 }
