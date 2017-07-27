@@ -31,7 +31,7 @@
  * --------------------------------------------------------------------------------
  */
 
-'use strict'
+'use strict';
 
 angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect' , [ '$sce', '$timeout', '$templateCache', function ( $sce, $timeout, $templateCache ) {
     return {
@@ -671,7 +671,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                     else {
                         if ( !$scope.isDisabled ) {
                             $scope.tabIndex = $scope.tabIndex + helperItemsLength;
-                            if ( $scope.inputModel.length > 0 ) {
+                            if ( $scope.inputModel.length > 0 && formElements[ $scope.tabIndex ]) {
                                 formElements[ $scope.tabIndex ].focus();
                                 $scope.setFocusStyle( $scope.tabIndex );
                                 // blur button in vain
@@ -683,7 +683,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                     // open callback
                     $scope.onOpen();
                 }
-            }
+            };
 
             // handle clicks outside the button / multi select layer
             $scope.externalClickListener = function( e ) {
@@ -707,7 +707,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
 
                 // set focus on button again
                 element.children().children()[ 0 ].focus();
-            }
+            };
 
             // select All / select None / reset buttons
             $scope.select = function( type, e ) {
@@ -760,7 +760,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                         break;
                     default:
                 }
-            }
+            };
 
             // just to create a random variable name                
             function genRandomString( length ) {
@@ -784,7 +784,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                         spacing-=2;
                     }
                 });
-            }
+            };
 
             // prepare original index
             $scope.prepareIndex = function() {
@@ -793,7 +793,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                     value[ $scope.indexProperty ] = ctr;
                     ctr++;
                 });
-            }
+            };
 
             // navigate using up and down arrow
             $scope.keyboardListener = function( e ) {
@@ -870,17 +870,17 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                 }
 
                 isNavigationKey = false;
-            }
+            };
 
             // set (add) CSS style on selected row
             $scope.setFocusStyle = function( tabIndex ) {
                 angular.element( formElements[ tabIndex ] ).parent().parent().parent().addClass( 'multiSelectFocus' );
-            }
+            };
 
             // remove CSS style on selected row
             $scope.removeFocusStyle = function( tabIndex ) {
                 angular.element( formElements[ tabIndex ] ).parent().parent().parent().removeClass( 'multiSelectFocus' );
-            }
+            };
 
             /*********************
              *********************
