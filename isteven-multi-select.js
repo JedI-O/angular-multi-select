@@ -179,19 +179,8 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                     // if it's group start
                     if ( typeof $scope.inputModel[ i ][ attrs.groupProperty ] !== 'undefined' && $scope.inputModel[ i ][ attrs.groupProperty ] === true ) {
 
-                        if (
-                            (
-                                !$scope.filteredModel[ $scope.filteredModel.length - 1 ]
-                                ||
-                                typeof $scope.filteredModel[ $scope.filteredModel.length - 1 ][ attrs.groupProperty ] !== 'undefined'
-                            )
-                            &&
-                            (
-                                !$scope.filteredModel[ $scope.filteredModel.length - 1 ]
-                                ||
-                                $scope.filteredModel[ $scope.filteredModel.length - 1 ][ attrs.groupProperty ] === false
-                            )
-                        ) {
+                        if ( typeof $scope.filteredModel[ $scope.filteredModel.length - 1 ][ attrs.groupProperty ] !== 'undefined'
+                            && $scope.filteredModel[ $scope.filteredModel.length - 1 ][ attrs.groupProperty ] === false ) {
                             $scope.filteredModel.pop();
                         }
                         else {
@@ -564,7 +553,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                         $scope.varButtonLabel += '(' + $scope.outputModel.length + ')';
                     }
                 }
-                $scope.varButtonLabel = $sce.trustAsHtml( $scope.varButtonLabel + '<span class="caret"></span>' );
+                $scope.varButtonLabel = $scope.varButtonLabel + '<span class="caret"></span>';
             }
 
             // Check if a checkbox is disabled or enabled. It will check the granular control (disableProperty) and global control (isDisabled)
@@ -593,7 +582,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                 var label   = '';
 
                 angular.forEach( temp, function( value, key ) {
-                    item[ value ] && ( label += '' + value.split( '.' ).reduce( function( prev, current ) {
+                    item[ value ] && ( label += '&nbsp;' + value.split( '.' ).reduce( function( prev, current ) {
                             return prev[ current ];
                         }, item ));
                 });
@@ -601,7 +590,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                 if ( type.toUpperCase() === 'BUTTONLABEL' ) {
                     return label;
                 }
-                return $sce.trustAsHtml( label );
+                return label;
             }
 
             // UI operations to show/hide checkboxes based on click event..
@@ -961,20 +950,20 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
 
             // configurable button labels
             if ( typeof attrs.translation !== 'undefined' ) {
-                $scope.lang.selectAll       = $sce.trustAsHtml( $scope.icon.selectAll  + '&nbsp;&nbsp;' + $scope.translation.selectAll );
-                $scope.lang.selectNone      = $sce.trustAsHtml( $scope.icon.selectNone + '&nbsp;&nbsp;' + $scope.translation.selectNone );
-                $scope.lang.reset           = $sce.trustAsHtml( $scope.icon.reset      + '&nbsp;&nbsp;' + $scope.translation.reset );
+                $scope.lang.selectAll       = $scope.icon.selectAll  + '&nbsp;&nbsp;' + $scope.translation.selectAll;
+                $scope.lang.selectNone      = $scope.icon.selectNone + '&nbsp;&nbsp;' + $scope.translation.selectNone;
+                $scope.lang.reset           = $scope.icon.reset      + '&nbsp;&nbsp;' + $scope.translation.reset;
                 $scope.lang.search          = $scope.translation.search;
-                $scope.lang.nothingSelected = $sce.trustAsHtml( $scope.translation.nothingSelected );
+                $scope.lang.nothingSelected = $scope.translation.nothingSelected;
             }
             else {
-                $scope.lang.selectAll       = $sce.trustAsHtml( $scope.icon.selectAll  + '&nbsp;&nbsp;Select All' );
-                $scope.lang.selectNone      = $sce.trustAsHtml( $scope.icon.selectNone + '&nbsp;&nbsp;Select None' );
-                $scope.lang.reset           = $sce.trustAsHtml( $scope.icon.reset      + '&nbsp;&nbsp;Reset' );
+                $scope.lang.selectAll       = $scope.icon.selectAll  + '&nbsp;&nbsp;Select All';
+                $scope.lang.selectNone      = $scope.icon.selectNone + '&nbsp;&nbsp;Select None';
+                $scope.lang.reset           = $scope.icon.reset      + '&nbsp;&nbsp;Reset';
                 $scope.lang.search          = 'Search...';
                 $scope.lang.nothingSelected = 'None Selected';
             }
-            $scope.icon.tickMark = $sce.trustAsHtml( $scope.icon.tickMark );
+            $scope.icon.tickMark = $scope.icon.tickMark;
 
             // min length of keyword to trigger the filter function
             if ( typeof attrs.MinSearchLength !== 'undefined' && parseInt( attrs.MinSearchLength ) > 0 ) {
