@@ -178,9 +178,19 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
 
                     // if it's group start
                     if ( typeof $scope.inputModel[ i ][ attrs.groupProperty ] !== 'undefined' && $scope.inputModel[ i ][ attrs.groupProperty ] === true ) {
-
-                        if ( typeof $scope.filteredModel[ $scope.filteredModel.length - 1 ][ attrs.groupProperty ] !== 'undefined'
-                            && $scope.filteredModel[ $scope.filteredModel.length - 1 ][ attrs.groupProperty ] === false ) {
+                        if (
+                            (
+                                !$scope.filteredModel[ $scope.filteredModel.length - 1 ]
+                                ||
+                                typeof $scope.filteredModel[ $scope.filteredModel.length - 1 ][ attrs.groupProperty ] !== 'undefined'
+                            )
+                            &&
+                            (
+                                !$scope.filteredModel[ $scope.filteredModel.length - 1 ]
+                                ||
+                                $scope.filteredModel[ $scope.filteredModel.length - 1 ][ attrs.groupProperty ] === false
+                            )
+                        ) {
                             $scope.filteredModel.pop();
                         }
                         else {
@@ -582,7 +592,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                 var label   = '';
 
                 angular.forEach( temp, function( value, key ) {
-                    item[ value ] && ( label += '&nbsp;' + value.split( '.' ).reduce( function( prev, current ) {
+                    item[ value ] && ( label += '' + value.split( '.' ).reduce( function( prev, current ) {
                             return prev[ current ];
                         }, item ));
                 });
