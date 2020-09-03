@@ -1,32 +1,32 @@
-/* 
+/*
  * Angular JS Multi Select
- * Creates a dropdown-like button with checkboxes. 
+ * Creates a dropdown-like button with checkboxes.
  *
  * Project started on: Tue, 14 Jan 2014 - 5:18:02 PM
  * Current version: 4.0.0
- * 
+ *
  * Released under the MIT License
  * --------------------------------------------------------------------------------
  * The MIT License (MIT)
  *
  * Copyright (c) 2014 Ignatius Steven (https://github.com/isteven)
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy 
- * of this software and associated documentation files (the "Software"), to deal 
- * in the Software without restriction, including without limitation the rights 
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
- * copies of the Software, and to permit persons to whom the Software is 
- * furnished to do so, subject to the following conditions: 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all 
+ * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  * --------------------------------------------------------------------------------
  */
@@ -178,24 +178,11 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
 
                     // if it's group start
                     if ( typeof $scope.inputModel[ i ][ attrs.groupProperty ] !== 'undefined' && $scope.inputModel[ i ][ attrs.groupProperty ] === true ) {
-                        if (
-                            (
-                                !$scope.filteredModel[ $scope.filteredModel.length - 1 ]
-                                ||
-                                typeof $scope.filteredModel[ $scope.filteredModel.length - 1 ][ attrs.groupProperty ] !== 'undefined'
-                            )
-                            &&
-                            (
-                                !$scope.filteredModel[ $scope.filteredModel.length - 1 ]
-                                ||
-                                $scope.filteredModel[ $scope.filteredModel.length - 1 ][ attrs.groupProperty ] === false
-                            )
-                        ) {
-                            $scope.filteredModel.pop();
-                        }
-                        else {
-                            $scope.filteredModel.push( $scope.inputModel[ i ] );
-                        }
+                        /* The original I-Steven checks at this point whether the group is empty or not.
+                        However, that causes problems with indexing and thus, false selection.
+                        Aside from that, viewing empty groups (i.e. just the headline and no elements)
+                        is sometimes convenient for the user and thus to be considered a feature */
+                        $scope.filteredModel.push( $scope.inputModel[ i ] );
                     }
                 }
 
@@ -1120,4 +1107,4 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
         '</div>'+
         '</span>';
     $templateCache.put( 'isteven-multi-select.htm' , template );
-}]); 
+}]);
